@@ -1,4 +1,4 @@
-## Creating the project
+## Creating the nextjs project  
 
 Navigate to a folder on your machine. In my case I navigated to the location "E:\Sudhanshu\Learning\nextjs" on my laptop.  
 
@@ -132,6 +132,51 @@ To resolve this let us add the below key-value pair in the tsconfig.json right a
 
 Rename the index.js file inside the pages folder to index.tsx. We are now done with the migration of our newly created nextjs
 app from javascript to typescript.  
+
+## Configuring the nextjs app to use tailwindcss for styling
+
+Configuring tailwindcss with nextjs can be done manually or the nextjs project can be created with nextjs+tailwind example using the below command.
+```
+npx create-next-app --example with-tailwindcss with-tailwindcss-app
+# or
+yarn create next-app --example with-tailwindcss with-tailwindcss-app
+```
+
+In our case we would be doing the configuration manually by following the official guideline mentioned on the link below.
+
+[Configuring Tailwind with nextjs](https://tailwindcss.com/docs/guides/nextjs)  
+
+The steps include running the commands below.
+```
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+Add the following code to the newly created tailwind.config.js file.
+```js
+module.exports = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+Create the file ``globals.css`` in the styles folder and the the code below.
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+Make sure that the file ``globals.css`` is imported in the ``_app.tsx`` for tailwindcss to reflect on the UI.  
+
+
+
 
 
 
